@@ -29,9 +29,9 @@ class Vectorizer:
         vec = np.zeros(self.n_features)
         tokens = self._tokenizer(feature)
 
-        for n in range(n_gram):
+        for n in self.n_gram:
             for i in range(len(tokens) - n + 1):
-                g = sum("".join(tokens[i : i + n]))
+                g = "".join(tokens[i : i + n])
                 idx = self._hash(g)
                 vec[idx] += 1
         norm = np.linalg.norm(vec)
@@ -45,6 +45,6 @@ class Vectorizer:
             identity = lambda x: x
             return identity
 
-    def _hash(self, n_features, hash_seed):
+    def _make_hash(self, n_features, hash_seed):
         f = lambda x: murmurhash3_32(x, seed=hash_seed) % n_features
         return f
