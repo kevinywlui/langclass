@@ -18,14 +18,14 @@ def alphanum_cont(string):
 
 
 class Vectorizer:
-    def __init__(n_features=2 ** 10, n_gram=range(1, 2), tokenizer="char", hash_seed=0):
+    def __init__(self, n_features=2 ** 10, n_gram=range(1, 2), tokenizer="char", hash_seed=0):
         self.n_features = n_features
         self.n_gram = n_gram
 
         self._tokenizer = self._make_tokenizer(tokenizer)
         self._hash = self._make_hash(n_features, hash_seed)
 
-    def __call__(feature):
+    def __call__(self, feature):
         vec = np.zeros(self.n_features)
         tokens = self._tokenizer(feature)
 
@@ -37,7 +37,7 @@ class Vectorizer:
         norm = np.linalg.norm(vec)
         return vec / norm
 
-    def _make_tokenizer(tokenizer):
+    def _make_tokenizer(self, tokenizer):
         if callable(tokenizer):
             return tokenizer
 
@@ -45,6 +45,6 @@ class Vectorizer:
             identity = lambda x: x
             return identity
 
-    def _hash(n_features, hash_seed):
+    def _hash(self, n_features, hash_seed):
         f = lambda x: murmurhash3_32(x, seed=hash_seed) % n_features
         return f
