@@ -2,7 +2,17 @@
 
 from sklearn.utils import murmurhash3_32
 import numpy as np
+import re
 
+def alphanum_cont(string):
+    nonalphanumerical = re.compile(r'([^a-zA-Z0-9])')
+    split_code = string.split()
+    tokens = []
+    for part in split_code:
+        for t in re.split(nonalphanumerical, part):
+            if t:
+                tokens.append(t)
+    return tokens
 
 class Vectorizer():
     def __init__(n_features=2**10, n_gram=range(1, 2), tokenizer='char', hash_seed=0):
