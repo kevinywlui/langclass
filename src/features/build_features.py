@@ -1,11 +1,13 @@
 # This file provides method for vectorizing the input code
 
-from sklearn.utils import murmurhash3_32
-import numpy as np
 import re
 
+import numpy as np
+from sklearn.utils import murmurhash3_32
+
+
 def alphanum_cont(string):
-    nonalphanumerical = re.compile(r'([^a-zA-Z0-9])')
+    nonalphanumerical = re.compile(r"([^a-zA-Z0-9])")
     split_code = string.split()
     tokens = []
     for part in split_code:
@@ -14,8 +16,9 @@ def alphanum_cont(string):
                 tokens.append(t)
     return tokens
 
-class Vectorizer():
-    def __init__(n_features=2**10, n_gram=range(1, 2), tokenizer='char', hash_seed=0):
+
+class Vectorizer:
+    def __init__(n_features=2 ** 10, n_gram=range(1, 2), tokenizer="char", hash_seed=0):
         self.n_features = n_features
         self.n_gram = n_gram
 
@@ -25,21 +28,20 @@ class Vectorizer():
     def __call__(feature):
         vec = np.zeros(self.n_features)
         tokens = self._tokenizer(feature)
-        
+
         for n in range(n_gram):
-            for i in range(len(tokens)-n+1):
-                g = sum(''.join(tokens[i:i+n]))
+            for i in range(len(tokens) - n + 1):
+                g = sum("".join(tokens[i : i + n]))
                 idx = self._hash(g)
                 vec[idx] += 1
         norm = np.linalg.norm(vec)
         return vec / norm
-    
-    
+
     def _make_tokenizer(tokenizer):
         if callable(tokenizer):
             return tokenizer
-        
-        if tokenizer == 'char':
+
+        if tokenizer == "char":
             identity = lambda x: x
             return identity
 
