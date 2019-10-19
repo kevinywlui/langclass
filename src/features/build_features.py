@@ -1,13 +1,38 @@
 # This file provides method for vectorizing the input code
 
-from sklearn.utils import murmurhash
+from sklearn.utils import murmurhash3_32
+import numpy as np
 
 
 class Vectorizer():
-    def __init__(n_features=2**10, n_gram=(1, 1), tokenizer=None, hash_seed=0):
+    def __init__(n_features=2**10, n_gram=range(1, 2), tokenizer='char', hash_seed=0):
         self.n_features = n_features
         self.n_gram = n_gram
-        self.tokenizer = tokenizer
-        self.hash_seed = hash_seed
+
+        self._tokenizer = self._make_tokenizer(tokenizer)
+        self._hash = self._make_hash(n_features, hash_seed)
 
     def __call__(feature):
+        vec = np.zeros(self.n_features)
+        tokens = self._tokenizer(feature)
+        
+        for n in range(n_gram):
+            for i in range(len(tokens)-n+1):
+                g = sum(''.join(tokens[i:i+n]))
+                idx = self._hash(g)
+                vec[idx] += 1
+        norm = np.linalg.norm(vec)
+        return vec / norm
+    
+    
+    def _make_tokenizer(tokenizer):
+        if callable(tokenizer):
+            return tokenizer
+        
+        if tokenizer == 'char':
+            identity = lambda x: x
+            return identity
+
+    def _hash(n_features, hash_seed):
+        f = lambda x: murmurhash3_32(x, seed=hash_seed) % n_features
+        return f
