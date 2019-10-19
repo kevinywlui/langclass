@@ -1,0 +1,3 @@
+[submodule "data/external/RosettaCodeData"]
+	path = data/external/RosettaCodeData
+	url = https://github.com/acmeism/RosettaCodeData
