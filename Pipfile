@@ -11,6 +11,7 @@ isort = "*"
 numpy = "*"
 scikit-learn = "*"
 isort = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
