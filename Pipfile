@@ -12,6 +12,7 @@ numpy = "*"
 scikit-learn = "*"
 isort = "*"
 pandas = "*"
+lightgbm = "*"
 
 [requires]
 python_version = "3.7"
