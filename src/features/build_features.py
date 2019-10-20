@@ -19,15 +19,15 @@ def alphanum_cont(string):
 
 class Vectorizer:
     def __init__(self, n_features=2 ** 10, n_gram=range(1, 2),
-                 tokenizer="char", hash_seed=0, build_dict=False):
+                 tokenizer="char", hash_seed=0, build_hash_dict=False):
         self.n_features = n_features
         self.n_gram = n_gram
 
         self._tokenizer = self._make_tokenizer(tokenizer)
         self.hash = self.make_hash(n_features, hash_seed)
 
-        self.build_dict = build_dict
-        self.feature_dict = dict()
+        self.build_hash_dict = build_hash_dict
+        self.hash_dict = dict()
 
     def __call__(self, feature):
         vec = np.zeros(self.n_features)
@@ -38,8 +38,8 @@ class Vectorizer:
                 g = "".join(tokens[i : i + n])
                 idx = self.hash(g)
                 vec[idx] += 1
-                if self.build_dict:
-                    self.feature_dict[g] = idx
+                if self.build_hash_dict:
+                    self.hash_dict[g] = idx
         norm = np.linalg.norm(vec)
         return vec / norm
 
