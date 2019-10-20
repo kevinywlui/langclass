@@ -1,5 +1,8 @@
+LANGS=Python Java C JavaScript Ruby C++ Haskell Go
+.PHONY: fixer data
 
-.PHONY: fixer
+data:
+	python ./src/data/make_dataset.py $(LANGS)
 
 fixer:
 	black src
