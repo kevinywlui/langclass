@@ -6,9 +6,6 @@ import numpy as np
 
 class Model():
     def __init__(self, model, vectorizer):
-
-        self.np_vectorizer = np.vectorize(vectorizer)
-
         self.model = model
         self.label_encoder = LabelEncoder()
         self.feature_dict = dict()
@@ -32,11 +29,23 @@ class Model():
     def y_dec(self, y_enc):
         """Decode `y_enc` by applying the inverse transform of the label
         encoder.
+
+        Args:
+            y_enc: An integer to be decoded.
+        
+        Returns:
+            The corresponding label of y_dec.
         """
         return self.label_encoder.inverse_transform([y_enc])[0]
 
     def predict(self, x):
         """Return the prediction.
+
+        Args:
+            x: Input
+
+        Returns:
+            The predict of the y-value given this input.
         """
         vec_x = self.vectorizer(x)
         enc_y = self.model.predict([vec_x])
@@ -45,8 +54,14 @@ class Model():
 
     def fit(self, X, y, *args, **kwargs):
         """Fit the model.
+
+        Args:
+            X: pd.Series of inputs
+            y: pd.Series of labels
+            *args: arguments to be passed to model.fit
+            **kwargs: keyword-arguments to be passed to model.fit
         """
-        vec_X = f(X)
+        vec_X = self.vec(X)
         enc_y = self.label_encoder.fit_transform(y)
         self.model.fit(vec_X, enc_y, *args, **kwargs)
         return
