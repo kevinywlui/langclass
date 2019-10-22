@@ -18,8 +18,14 @@ def alphanum_cont(string):
 
 
 class Vectorizer:
-    def __init__(self, n_features=2 ** 10, n_gram=range(1, 2),
-                 tokenizer="char", hash_seed=0, build_hash_dict=False):
+    def __init__(
+        self,
+        n_features=2 ** 10,
+        n_gram=range(1, 2),
+        tokenizer="char",
+        hash_seed=0,
+        build_hash_dict=False,
+    ):
         self.n_features = n_features
         self.n_gram = n_gram
 

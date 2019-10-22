@@ -3,7 +3,7 @@
 # This script will generate a single csv to intended to be used as a final
 # dataset. An example invocation of the script is
 #   `python make_dataset.py Python, Ruby, C
-# 
+#
 # The resulting result csv file will have header `['language', 'code']`, where
 #   - `language` is either Python, Ruby, or C,
 #   - `code` is a code snippet

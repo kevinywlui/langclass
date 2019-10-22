@@ -4,7 +4,8 @@
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
-class Model():
+
+class Model:
     def __init__(self, model, vectorizer):
         self.model = model
         self.label_encoder = LabelEncoder()
@@ -24,7 +25,6 @@ class Model():
         for _index, value in X.items():
             v_list.append(self.vectorizer(value))
         return np.array(v_list)
-
 
     def y_dec(self, y_enc):
         """Decode `y_enc` by applying the inverse transform of the label
