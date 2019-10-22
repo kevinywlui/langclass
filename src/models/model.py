@@ -23,9 +23,10 @@ class Model():
         Returns:
             2d-numpy array whose rows are the vectorized-rows of X.
         """
-        for index, value in X.items():
-
-
+        v_list = []
+        for _index, value in X.items():
+            v_list.append(self.vectorizer(value))
+        return np.array(v_list)
 
 
     def y_dec(self, y_enc):
