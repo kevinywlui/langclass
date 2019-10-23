@@ -22,14 +22,19 @@ data_path = file_path.parent.parent.parent / "data"
 # path of input (language directory of RosettaCodeData)
 lang_path = data_path / "external" / "RosettaCodeData" / "Lang"
 
-# path of output
-output_file = data_path / "processed" / "data.csv"
+# path of output folder and output file
+output_folder = data_path / "processed"
+output_file = output_folder / "data.csv"
 
 # languages used
 langs = sys.argv[1:]
 
 # header names
 fieldnames = ["language", "code"]
+
+# make the directory if needed
+if not output_folder.is_dir():
+    os.mkdir(output_folder) 
 
 with open(output_file, "w") as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
