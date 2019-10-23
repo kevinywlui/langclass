@@ -4,6 +4,7 @@ import re
 
 import numpy as np
 from sklearn.utils import murmurhash3_32
+from collections import defaultdict
 
 
 def alphanum_cont(string):
@@ -33,7 +34,7 @@ class Vectorizer:
         self.hash = self.make_hash(n_features, hash_seed)
 
         self.build_hash_dict = build_hash_dict
-        self.hash_dict = dict()
+        self.hash_dict = defaultdict(set)
 
     def __call__(self, feature):
         vec = np.zeros(self.n_features)
@@ -45,7 +46,7 @@ class Vectorizer:
                 idx = self.hash(g)
                 vec[idx] += 1
                 if self.build_hash_dict:
-                    self.hash_dict[g] = idx
+                    self.hash_dict[idx].add(g)
         norm = np.linalg.norm(vec)
         return vec / norm
 
