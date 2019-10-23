@@ -11,7 +11,6 @@ class Model:
         self.model = model
         self.vectorizer = vectorizer
         self.label_encoder = LabelEncoder()
-        self.feature_dict = dict()
 
     # this needs a new name
     def vec(self, X):
