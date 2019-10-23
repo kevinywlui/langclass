@@ -48,7 +48,10 @@ class Vectorizer:
                 if self.build_hash_dict:
                     self.hash_dict[idx].add(g)
         norm = np.linalg.norm(vec)
-        return vec / norm
+        if norm > 0:
+            return vec / norm
+        else:
+            return vec
 
     def _make_tokenizer(self, tokenizer):
         if callable(tokenizer):
