@@ -34,7 +34,7 @@ fieldnames = ["language", "code"]
 
 # make the directory if needed
 if not output_folder.is_dir():
-    os.mkdir(output_folder) 
+    os.mkdir(output_folder)
 
 with open(output_file, "w") as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

@@ -1,8 +1,8 @@
 # This file holds the model class which helps abstract away from pre/post
 # processing.
 
-from sklearn.preprocessing import LabelEncoder
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 
 class Model:
