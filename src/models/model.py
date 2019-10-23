@@ -49,7 +49,7 @@ class Model:
             The predict of the y-value given this input.
         """
         vec_x = self.vectorizer(x)
-        enc_y = self.model.predict([vec_x])
+        y_enc = self.model.predict([vec_x])
         y = self.y_dec(y_enc)
         return y
 
