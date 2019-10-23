@@ -8,6 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 class Model:
     def __init__(self, model, vectorizer):
         self.model = model
+        self.vectorizer = vectorizer
         self.label_encoder = LabelEncoder()
         self.feature_dict = dict()
 
