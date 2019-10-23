@@ -4,6 +4,7 @@
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.externals import joblib
+from sklearn.metrics import accuracy_score
 
 
 class Model:
@@ -75,3 +76,18 @@ class Model:
         """
         joblib.dump(self.model, path)
         return
+    
+    def evaluate(self, X, y):
+        """Evaluate the accuracy of this model using a test set.
+
+        Args:
+            X: pd.Series of inputs
+            y: pd.Series of labels
+
+        Returns:
+            a float representing the accuracy
+        """
+        vec_X = self.vec(X)
+        y_pred = self.model.predict(vec_X)
+        y_enc = self.label_encoder.transform(y)
+        return accuracy_score(y_enc, y_pred)
