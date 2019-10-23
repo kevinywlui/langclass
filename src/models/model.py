@@ -3,6 +3,7 @@
 
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
+from sklearn.externals import joblib
 
 
 class Model:
@@ -65,4 +66,13 @@ class Model:
         vec_X = self.vec(X)
         enc_y = self.label_encoder.fit_transform(y)
         self.model.fit(vec_X, enc_y, *args, **kwargs)
+        return
+
+    def save(self, path):
+        """Save a pickled version of the model using joblib.
+
+        Args:
+            path: the path the pickle will be saved to.
+        """
+        joblib.dump(self.model, path)
         return
