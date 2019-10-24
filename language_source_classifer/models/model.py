@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 from pathlib import Path
 
-from src.features.build_features import Vectorizer
+from language_source_classifier.features.build_features import Vectorizer
 
 
 class Model:
