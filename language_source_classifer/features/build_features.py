@@ -53,6 +53,20 @@ class Vectorizer:
         else:
             return vec
 
+    def vectorize_df(self, df):
+        """Return the vectorized version of `df` using `self.vectorize`.
+
+        Args:
+            df: pandas series whose entries will be vectorized
+
+        Returns:
+            2d-numpy array whose rows are the vectorized-rows of df.
+        """
+        v_list = []
+        for _index, value in df.items():
+            v_list.append(self(value))
+        return np.array(v_list)
+
     def _make_tokenizer(self, tokenizer):
         if callable(tokenizer):
             return tokenizer
