@@ -1,11 +1,12 @@
 # This file holds the model class which helps abstract away from pre/post
 # processing.
 
+from pathlib import Path
+
 import numpy as np
 from sklearn.externals import joblib
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
-from pathlib import Path
 
 from language_source_classifier.features.build_features import Vectorizer
 

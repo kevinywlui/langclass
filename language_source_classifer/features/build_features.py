@@ -20,11 +20,7 @@ def alphanum(string):
 
 class Vectorizer:
     def __init__(
-        self,
-        n_features=2 ** 10,
-        n_gram=(1, 1),
-        tokenizer="char",
-        hash_seed=0,
+        self, n_features=2 ** 10, n_gram=(1, 1), tokenizer="char", hash_seed=0
     ):
         self.n_features = n_features
         lo, hi = n_gram
