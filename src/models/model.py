@@ -6,11 +6,27 @@ from sklearn.externals import joblib
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 
+from src.features.build_features import Vectorizer
+
 
 class Model:
-    def __init__(self, model, vectorizer):
+    def __init__(
+        self,
+        model,
+        n_features=2 ** 10,
+        n_gram=range(1, 2),
+        tokenizer="char",
+        hash_seed=0,
+        build_hash_dict=False,
+    ):
         self.model = model
-        self.vectorizer = vectorizer
+        self.vectorizer = Vectorizer(
+            n_features=n_features,
+            n_gram=n_gram,
+            tokenizer=tokenizer,
+            hash_seed=hash_seed,
+            build_hash_dict=build_hash_dict,
+        )
         self.label_encoder = LabelEncoder()
 
     # this needs a new name
