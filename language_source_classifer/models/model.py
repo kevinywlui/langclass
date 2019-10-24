@@ -51,7 +51,7 @@ class Model:
 
         Args:
             y_enc: An integer to be decoded.
-        
+
         Returns:
             The corresponding label of y_dec.
         """
@@ -94,7 +94,7 @@ class Model:
         """
         path = Path(path)
         if path.exists() and not overwrite:
-            raise FileExistsError('attempting to save pickle to an existing file')
+            raise FileExistsError("attempting to save pickle to an existing file")
         joblib.dump(self.model, path)
         return
 

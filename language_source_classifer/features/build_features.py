@@ -22,13 +22,14 @@ class Vectorizer:
     def __init__(
         self,
         n_features=2 ** 10,
-        n_gram=range(1, 2),
+        n_gram=(1, 1),
         tokenizer="char",
         hash_seed=0,
         build_hash_dict=False,
     ):
         self.n_features = n_features
-        self.n_gram = n_gram
+        lo, hi = n_gram
+        self.n_gram = range(lo, hi + 1)
 
         self._tokenizer = self._make_tokenizer(tokenizer)
         self.hash = self.make_hash(n_features, hash_seed)
