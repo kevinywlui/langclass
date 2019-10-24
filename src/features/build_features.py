@@ -1,13 +1,13 @@
 # This file provides method for vectorizing the input code
 
 import re
+from collections import defaultdict
 
 import numpy as np
 from sklearn.utils import murmurhash3_32
-from collections import defaultdict
 
 
-def alphanum_cont(string):
+def alphanum(string):
     nonalphanumerical = re.compile(r"([^a-zA-Z0-9])")
     split_code = string.split()
     tokens = []
@@ -56,10 +56,11 @@ class Vectorizer:
     def _make_tokenizer(self, tokenizer):
         if callable(tokenizer):
             return tokenizer
-
         if tokenizer == "char":
             identity = lambda x: x
             return identity
+        if tokenizer == "alphanum":
+            return alphanum
 
     def make_hash(self, n_features, hash_seed):
         f = lambda x: murmurhash3_32(x, seed=hash_seed) % n_features

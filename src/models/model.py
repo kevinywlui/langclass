@@ -2,9 +2,9 @@
 # processing.
 
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
 from sklearn.externals import joblib
 from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import LabelEncoder
 
 
 class Model:
@@ -76,7 +76,7 @@ class Model:
         """
         joblib.dump(self.model, path)
         return
-    
+
     def evaluate(self, X, y):
         """Evaluate the accuracy of this model using a test set.
 
