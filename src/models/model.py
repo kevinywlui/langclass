@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.externals import joblib
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
+from pathlib import Path
 
 from src.features.build_features import Vectorizer
 
@@ -84,12 +85,16 @@ class Model:
         self.model.fit(vec_X, enc_y, *args, **kwargs)
         return
 
-    def save(self, path):
+    def save(self, path, overwrite=False):
         """Save a pickled version of the model using joblib.
 
         Args:
             path: the path the pickle will be saved to.
+            overwrite: boolean determining whether we overwrite
         """
+        path = Path(path)
+        if path.exists() and not overwrite:
+            raise FileExistsError('attempting to save pickle to an existing file')
         joblib.dump(self.model, path)
         return
 
