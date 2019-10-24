@@ -25,7 +25,6 @@ class Vectorizer:
         n_gram=(1, 1),
         tokenizer="char",
         hash_seed=0,
-        build_hash_dict=False,
     ):
         self.n_features = n_features
         lo, hi = n_gram
@@ -34,10 +33,9 @@ class Vectorizer:
         self._tokenizer = self._make_tokenizer(tokenizer)
         self.hash = self.make_hash(n_features, hash_seed)
 
-        self.build_hash_dict = build_hash_dict
         self.hash_dict = defaultdict(set)
 
-    def __call__(self, feature):
+    def __call__(self, feature, update_hash_dict=False):
         vec = np.zeros(self.n_features)
         tokens = self._tokenizer(feature)
 
@@ -46,7 +44,7 @@ class Vectorizer:
                 g = "".join(tokens[i : i + n])
                 idx = self.hash(g)
                 vec[idx] += 1
-                if self.build_hash_dict:
+                if update_hash_dict:
                     self.hash_dict[idx].add(g)
         norm = np.linalg.norm(vec)
         if norm > 0:
@@ -54,7 +52,7 @@ class Vectorizer:
         else:
             return vec
 
-    def vectorize_df(self, df):
+    def vectorize_df(self, df, update_hash_dict=False):
         """Return the vectorized version of `df` using `self.vectorize`.
 
         Args:
@@ -65,7 +63,7 @@ class Vectorizer:
         """
         v_list = []
         for _index, value in df.items():
-            v_list.append(self(value))
+            v_list.append(self(value, update_hash_dict=update_hash_dict))
         return np.array(v_list)
 
     def _make_tokenizer(self, tokenizer):
