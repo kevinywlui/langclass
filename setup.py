@@ -7,4 +7,5 @@ setup(name='langclass',
       description='Machine learning model to classify programming languages',
       author='Kevin Lui',
       author_email='kevinywlui@gmail.com',
+      entry_points={'console_scripts': ['langclass = langclass.models.predict_model_cli:predict']},
      )
