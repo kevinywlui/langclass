@@ -8,6 +8,8 @@ import lightgbm as lgb
 from langclass.data.dataframes import Data
 from langclass.features.build_features import Vectorizer
 
+import joblib
+
 current_file_path = Path(os.path.realpath(__file__))
 vecparams_model_path = (
     current_file_path.parent.parent / "models" / "vecparams_model.pkl"
@@ -25,7 +27,7 @@ def main():
 
     X_train_vec = vec.vectorize_df(X_train)
 
-    model = lgb.LGBMClassifier(n_estimators=200)
+    model = lgb.LGBMClassifier(n_estimators=150)
     model.fit(X_train_vec, y_train)
     vecparams_model = (params, model)
     joblib.dump(vecparams_model, "vecparams_model.pkl")
