@@ -10,6 +10,7 @@ from pathlib import Path
 current_file_path = Path(os.path.realpath(__file__))
 vecparams_model_path = current_file_path.parent.parent
 
-print(vecparams_model_path)
- def predict(code)
-#     params, model = joblib
+def predict(code)
+    params, model = joblib
+    vec = Vectorizer(**params)
+    return model.predict([vec(code)])[0]
