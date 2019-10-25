@@ -4,6 +4,8 @@
 import os
 from pathlib import Path
 
+import sys
+
 import joblib
 
 from langclass.features.build_features import Vectorizer
@@ -14,7 +16,8 @@ vecparams_model_path = (
 )
 
 
-def predict(code):
+def predict():
+    code = sys.argv[1]
     params, model = joblib.load(vecparams_model_path)
     vec = Vectorizer(**params)
-    return model.predict([vec(code)])[0]
+    print(model.predict([vec(code)])[0])
