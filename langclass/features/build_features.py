@@ -66,8 +66,10 @@ class Vectorizer:
         if callable(tokenizer):
             return tokenizer
         if tokenizer == "char":
+
             def identity(x):
                 return x
+
             return identity
         if tokenizer == "alphanum":
             return alphanum
@@ -75,4 +77,5 @@ class Vectorizer:
     def make_hash(self, n_features, hash_seed):
         def hash_function(x):
             return murmurhash3_32(x, seed=hash_seed) % n_features
+
         return hash_function
