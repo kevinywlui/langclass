@@ -66,11 +66,13 @@ class Vectorizer:
         if callable(tokenizer):
             return tokenizer
         if tokenizer == "char":
-            identity = lambda x: x
+            def identity(x):
+                return identity
             return identity
         if tokenizer == "alphanum":
             return alphanum
 
     def make_hash(self, n_features, hash_seed):
-        f = lambda x: murmurhash3_32(x, seed=hash_seed) % n_features
-        return f
+        def hash_function(x):
+            return murmurhash3_32(x, seed=hash_seed) % n_features
+        return hash_function
