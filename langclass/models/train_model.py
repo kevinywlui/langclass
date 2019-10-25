@@ -18,6 +18,7 @@ def main():
     data = Data()
     train_df = data.train_df
     X_train = train_df["code"]
+    y_train = train_df["language"]
 
     params = {"n_gram": (2, 2), "tokenizer": "char"}
     vec = Vectorizer(**params)
