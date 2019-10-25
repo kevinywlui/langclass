@@ -8,7 +8,7 @@ from sklearn.externals import joblib
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 
-from language_source_classifier.features.build_features import Vectorizer
+from langclass.features.build_features import Vectorizer
 
 
 class Model:

@@ -6,8 +6,8 @@ data_external:
 	git submodule update
 
 data: data_external
-	python ./language_source_classifer/data/make_dataset.py $(LANGS)
+	python ./langclass/data/make_dataset.py $(LANGS)
 
 fixer:
-	black language_source_classifer/
-	isort -rc ./language_source_classifer
+	black langclass/
+	isort -rc ./langclass
