@@ -67,7 +67,7 @@ class Vectorizer:
             return tokenizer
         if tokenizer == "char":
             def identity(x):
-                return identity
+                return x
             return identity
         if tokenizer == "alphanum":
             return alphanum
