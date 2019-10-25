@@ -10,7 +10,7 @@ from langclass.features.build_features import Vectorizer
 
 current_file_path = Path(os.path.realpath(__file__))
 vecparams_model_path = (
-    current_file_path.parent.parent / "models" / "vecparams_model.pkl"
+    current_file_path.parent.parent.parent / "models" / "vecparams_model.pkl"
 )
 
 

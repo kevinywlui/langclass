@@ -4,15 +4,15 @@
 import os
 from pathlib import Path
 
+import joblib
 import lightgbm as lgb
+
 from langclass.data.dataframes import Data
 from langclass.features.build_features import Vectorizer
 
-import joblib
-
 current_file_path = Path(os.path.realpath(__file__))
 vecparams_model_path = (
-    current_file_path.parent.parent / "models" / "vecparams_model.pkl"
+    current_file_path.parent.parent.parent / "models" / "vecparams_model.pkl"
 )
 
 
