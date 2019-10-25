@@ -4,7 +4,7 @@
 import os
 from pathlib import Path
 
-import lgb
+import lightgbm as lgb
 from langclass.data.dataframes import Data
 from langclass.features.build_features import Vectorizer
 
