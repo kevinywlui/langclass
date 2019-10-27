@@ -3,7 +3,7 @@ EXTERNAL_DATA=data/external/RosettaCodeData/README.md
 PROCESSED_DATA=data/processed/data.csv
 MODEL=models/vecparams_model.pkl
 
-.PHONY: fixer data train web-develop web-deploy
+.PHONY: fixer data train web-develop web-deploy clean-data
 
 $(EXTERNAL_DATA):
 	git submodule init
@@ -28,3 +28,7 @@ web-develop: train
 
 web-deploy: train
 	pipenv run python web/app.py deploy
+
+clean-data:
+	rm -rf data/external/*
+	rm -rf data/processed
