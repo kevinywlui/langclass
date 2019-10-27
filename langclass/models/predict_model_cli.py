@@ -2,9 +2,8 @@
 # make multiple predictions since each prediction will load the model.
 
 import os
-from pathlib import Path
-
 import sys
+from pathlib import Path
 
 import joblib
 
