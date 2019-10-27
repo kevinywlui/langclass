@@ -18,7 +18,4 @@ RUN pip3 install pipenv; pip3 install .; pipenv install
 
 RUN make train
 
-EXPOSE 80
 EXPOSE 5000
-
-CMD make web-develop
