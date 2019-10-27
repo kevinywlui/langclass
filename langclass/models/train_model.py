@@ -30,7 +30,7 @@ def main():
     model = lgb.LGBMClassifier(n_estimators=150)
     model.fit(X_train_vec, y_train)
     vecparams_model = (params, model)
-    joblib.dump(vecparams_model, "vecparams_model.pkl")
+    joblib.dump(vecparams_model, vecparams_model_path)
 
 
 if __name__ == "__main__":
