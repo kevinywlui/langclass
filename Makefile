@@ -2,6 +2,7 @@ LANGS=Python Java C JavaScript Ruby C++ Haskell Go
 EXTERNAL_DATA=data/external/RosettaCodeData/
 PROCESSED_DATA=data/processed/data.csv
 MODEL=models/vecparams_model.pkl
+
 .PHONY: fixer data
 
 $(EXTERNAL_DATA):
@@ -22,3 +23,5 @@ fixer:
 	black langclass/
 	isort -rc ./langclass
 
+web:
+	python web/app.py
