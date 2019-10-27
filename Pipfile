@@ -16,6 +16,7 @@ pandas = "*"
 lightgbm = "*"
 joblib = "*"
 flask = "*"
+waitress = "*"
 
 [pipenv]
 allow_prereleases = true
