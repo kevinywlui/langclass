@@ -1,12 +1,11 @@
 import os
+import sys
 from pathlib import Path
 
-from flask import Flask, request, render_template
-from waitress import serve
-
-import sys
-
+from flask import Flask, render_template, request
 from langclass.models.predict_model import Predictor
+
+from waitress import serve
 
 current_file_path = Path(os.path.realpath(__file__))
 vecparams_model_path = (
@@ -24,6 +23,7 @@ if mode == "deploy":
     port = 80
 else:
     port = 5000
+
 
 @app.route("/", methods=["POST", "GET"])
 def langclass_post():
