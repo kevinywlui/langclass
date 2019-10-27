@@ -18,4 +18,6 @@ RUN pip3 install pipenv; pip3 install .; pipenv install
 
 RUN make train
 
-EXPOSE 5000
+EXPOSE 80
+
+CMD make web-deploy
