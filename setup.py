@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='langclass',
       version='1.0',
@@ -8,4 +8,5 @@ setup(name='langclass',
       author='Kevin Lui',
       author_email='kevinywlui@gmail.com',
       entry_points={'console_scripts': ['langclass = langclass.models.predict_model_cli:predict']},
+      packages=find_packages()
      )

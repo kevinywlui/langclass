@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 from langclass.models.predict_model import Predictor
 
@@ -15,10 +15,12 @@ predictor = Predictor(vecparams_model_path)
 app = Flask(__name__)
 
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["POST", "GET"])
 def langclass_post():
-    code = request.form.get("code")
-    return predictor.predict(code)
+    if request.method == "POST":
+        code = request.form.get("code")
+        return predictor.predict(code)
+    return render_template("index.html", message="Hello Flask!")
 
 
 if __name__ == "__main__":
