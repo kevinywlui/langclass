@@ -12,8 +12,13 @@ RUN git clone https://github.com/kevinywlui/langclass
 
 WORKDIR "/langclass"
 
-RUN pip3 install pipenv
+ENV PYTHONPATH /langclass
+
+RUN pip3 install pipenv; pip3 install .; pipenv install
+
+RUN make train
 
 EXPOSE 80
+EXPOSE 5000
 
-CMD make web
+CMD make web-develop
