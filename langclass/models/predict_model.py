@@ -17,5 +17,8 @@ class Predictor:
         self.vectorizer = Vectorizer(**vec_params)
 
     def predict(self, code):
-        vec_code = self.vectorizer(code)
-        return self.model.predict([vec_code])[0]
+        if code:
+            vec_code = self.vectorizer(code)
+            return self.model.predict([vec_code])[0]
+        else:
+            return ''
