@@ -23,5 +23,5 @@ fixer:
 	black langclass/
 	isort -rc ./langclass
 
-web:
+web: train
 	python web/app.py
