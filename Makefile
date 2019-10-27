@@ -1,5 +1,5 @@
 LANGS=Python Java C JavaScript Ruby C++ Haskell Go
-EXTERNAL_DATA=data/external/RosettaCodeData/
+EXTERNAL_DATA=data/external/RosettaCodeData/README.md
 PROCESSED_DATA=data/processed/data.csv
 MODEL=models/vecparams_model.pkl
 
