@@ -23,7 +23,7 @@ if mode == "deploy":
     port = 80
 else:
     port = 5000
-
+host = '0.0.0.0'
 
 @app.route("/", methods=["POST", "GET"])
 def langclass_post():
@@ -36,6 +36,6 @@ def langclass_post():
 
 if __name__ == "__main__":
     if mode == "deploy":
-        serve(app, port=port)
+        serve(app, port=port, host=host)
     else:
-        app.run(debug=True, port=port, host='0.0.0.0')
+        app.run(debug=True, port=port, host=host)
