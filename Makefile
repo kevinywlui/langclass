@@ -23,10 +23,10 @@ fixer:
 	black langclass/
 	isort -rc ./langclass
 
-web-develop: train
+web-develop:
 	pipenv run python web/app.py
 
-web-deploy: train
+web-deploy:
 	pipenv run python web/app.py deploy
 
 clean-data:
