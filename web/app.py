@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 
 from flask import Flask, request, render_template
+from waitress import serve
+
+import sys
 
 from langclass.models.predict_model import Predictor
 
@@ -14,6 +17,13 @@ predictor = Predictor(vecparams_model_path)
 
 app = Flask(__name__)
 
+mode = "develop"
+if len(sys.argv) > 1:
+    mode = sys.argv[1]
+if mode == "deploy":
+    port = 80
+else:
+    port = 8080
 
 @app.route("/", methods=["POST", "GET"])
 def langclass_post():
@@ -25,4 +35,7 @@ def langclass_post():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    if mode == "deploy":
+        serve(app, port=port)
+    else:
+        app.run(debug=True, port=port)
