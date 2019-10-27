@@ -8,17 +8,13 @@ RUN apt-get update -qq \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/kevinywlui/langclass
+RUN git clone --depth 1 https://github.com/kevinywlui/langclass
 
 WORKDIR "/langclass"
 
 ENV PYTHONPATH /langclass
 
 RUN pip3 install pipenv; pip3 install .; pipenv install
-
-RUN make train
-
-RUN make clean-data
 
 EXPOSE 80
 
