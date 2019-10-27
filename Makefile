@@ -3,7 +3,7 @@ EXTERNAL_DATA=data/external/RosettaCodeData/
 PROCESSED_DATA=data/processed/data.csv
 MODEL=models/vecparams_model.pkl
 
-.PHONY: fixer data
+.PHONY: fixer data train web
 
 $(EXTERNAL_DATA):
 	git submodule init
