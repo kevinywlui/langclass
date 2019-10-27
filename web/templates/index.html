@@ -1,22 +1,34 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <title>Flask Template Example</title>
+<html lang='en'><head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content=' Predict  '>
+<meta name='theme-color' content='#008B8B'>
+<link rel='stylesheet' href='https://kevinlui.org/assets/css/main.6a060eb7.css'>
+<link rel='icon' href='https://kevinlui.org/favicon.ico'>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 </head>
 
-<body>
-    <div>
-        <p>{{ message }}</p>
-
-        <p>{{ contacts }}</p>
-        <p>My Contacts:</p>
-        <ul>
-            {% for contact in contacts %}
-            <li>{{ contact }}</li>
-            {% endfor %}
-        </ul>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Language Classifier</h1> 
     </div>
+  </div>
+</header>
+
+<body class='page type-page layout-simple-static'>
+  <div class='container entry-content'>
+  <form action="http://localhost:5000/" method="post">
+    <textarea rows="4" cols="50" name="code" autofocus
+                    placeholder="print('Hello World')">
+    </textarea>
+    <button>Predict</button>
+</form>
+
+<h2>Prediction: {{ language }}</h2>
+</div>
 </body>
 
 </html>
