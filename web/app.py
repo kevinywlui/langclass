@@ -23,7 +23,7 @@ if len(sys.argv) > 1:
 if mode == "deploy":
     port = 80
 else:
-    port = 8080
+    port = 5000
 
 @app.route("/", methods=["POST", "GET"])
 def langclass_post():
