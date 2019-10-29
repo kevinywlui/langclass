@@ -1,4 +1,4 @@
-LANGS=Python Java C JavaScript Ruby C++ Haskell Go
+LANGS=C C++ Go Haskell Java JavaScript Julia Lua Lua OCaml Perl Python Racket
 EXTERNAL_DATA=data/external/RosettaCodeData/README.md
 PROCESSED_DATA=data/processed/data.csv
 MODEL=models/vecparams_model.pkl
