@@ -17,5 +17,5 @@ def codedict_mean(*args):
         prod = 1
         for i in range(n):
             prod *= codedict[x][i]
-        codedict_mean.append(prod ** (1 / n))
+        codedict_mean.append((x, prod ** (1 / n)))
     return codedict_mean
