@@ -18,7 +18,7 @@ A live version is deployed here: <http://langclass.kevinlui.org/>
 The data was retrieve from the [Rosetta Code
 Project](https://rosettacode.org/wiki/Rosetta_Code) using this git repo:
 <https://github.com/acmeism/RosettaCodeData>. The features is a code snippet
-and the labels are programming languages. For example.
+and the labels are programming languages.
 
 ### Tokenization
 
@@ -43,7 +43,6 @@ so I'm putting it off.
 ### Feature Importance
 
 A fun thing I did was feature importance extraction despite feature hashing.
-See the live-version for an explanation for how I did this.
 
 The top features for character-level 2-grams are:
 
