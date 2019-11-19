@@ -43,9 +43,13 @@ so I'm putting it off.
 ### Feature Importance
 
 A fun thing I did was feature importance extraction despite feature hashing.
-See my blog for details. Here are the top features for the 2-best models
+See the live-version for an explanation for how I did this.
+
+The top features for character-level 2-grams are:
 
 `[';\n', ')\n', ' (', ', ', ' =', '= ', 't(', 't ', 'in', '# ']`
+
+The top features for 1-grams where we split on non-alphanumericals are:
 
 `[';', '=', '.', ':', 'print', ',', '"', '#', ')', '-']`
 
